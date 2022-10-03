@@ -23,6 +23,7 @@
 
 # FAQ
 
-[How can I install it?](https://github.com/lbeete/Kimai/wiki/How-to-install)
-
+- [How can I install it?](https://github.com/lbeete/Kimai/wiki/How-to-install)
+- [Why do you have so few options?](https://github.com/lbeete/Kimai/wiki/%C2%BFWhy-does-it-have-so-few-modules-and-so-few-options%3F)
+- [Download Kimai in exe file]()
 
