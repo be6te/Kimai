@@ -1,0 +1,8 @@
+wget
+requests
+easygui
+pick
+colorama
+fake_useragent
+pystyle
+halo
