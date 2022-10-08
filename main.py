@@ -21,20 +21,94 @@ import threading
 ua = UserAgent()
 init(autoreset=True)
 
-__current_version__ = '1.0'
-banner = r"""
-    __ __ _                 _    
-   / //_/(_)___ ___  ____ _(_)
-  / ,<  / / __ `__ \/ __ `/ / 
- / /| |/ / / / / / / /_/ / /  
-/_/ |_/_/_/ /_/ /_/\__,_/_/
-                    Loading
+__current_version__ = '1.1'
+
+banners = [
+r"""
+░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░
+░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
+░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░
+░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░
+░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░
+█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█
+█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░
+░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░
+░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░
+░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░
+░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░
+░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░
+░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░
+░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░
+""" ,
+r"""
+╭━┳━╭━╭━╮╮
+┃┈┈┈┣▅╋▅┫┃
+┃┈┃┈╰━╰━━━━━━╮
+╰┳╯┈┈┈┈┈┈┈┈┈◢▉◣
+╲┃┈┈┈┈┈┈┈┈┈┈▉▉▉
+╲┃┈┈┈┈┈┈┈┈┈┈◥▉◤
+╲┃┈┈┈┈╭━┳━━━━╯
+╲┣━━━━━━┫
+""",
+r"""
+██╗░░██╗███████╗███╗░░██╗████████╗░█████╗░██╗
+██║░░██║██╔════╝████╗░██║╚══██╔══╝██╔══██╗██║
+███████║█████╗░░██╔██╗██║░░░██║░░░███████║██║
+██╔══██║██╔══╝░░██║╚████║░░░██║░░░██╔══██║██║
+██║░░██║███████╗██║░╚███║░░░██║░░░██║░░██║██║
+╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝
+I think I got the name wrong, it was Kimai :3
+""",
+r"""
+                                                   /%#(%,                       
+                       #%###%                   *#((%((#(#(                     
+                     (#//* *(#                *((%## #(%/,%/                    
+                     /( ((((./#.              ##(#(.##(## #(                    
+                     *# ##### #(            .(##( ,(%#(%%.##                    
+                      % *#(#( ##(           #(##( #(#%(#( ##                    
+                      (# ####.(#(%          (((#(.,,(#,.#((                     
+                      *(*# * (((/#         .######%#(%(#%#                      
+                       #((((#(##(##/##(%((##(#(#((#((%(/%*                      
+                        ((#(#((#(##/##/(((#((((((/##(##(##(                     
+                      .#((  /#(#(  /#%(#####  ###(   ##(##(#                    
+                     #((#(###    ###(%((#((((#/   *(/(#/##((/                   
+                    .((/(//*/(/(#/#(/#(/#(##(#((%(#%##%%#%###.                  
+                     #( # (((#((#/(#/##/#((((((/#((#  #((#/(#.                  
+                     /#/((/(/(//#((#/(,,((/((((/((/#((#((#((#                   
+                     *#((#(#(##(#((%((%(##(##((/((/(((#(/#(                     
+                         ..#//(/(#/((/((/#((((#/#(*(#/%  
+
+                         Kimai made by github.com/beeteo                     
+                                                               
+"""
+]
+
+warning_message = fr"""
+ ____________________
+/                    \
+|                    |
+|                    |
+\____________________/
+         !  !
+         !  !
+         L_ !                                            {Fore.RED}Caution{Fore.WHITE}!{Fore.RESET}
+        / _)!             
+       / /__L              The creator is not responsible for any misuse or damage caused by this tool.
+ _____/ (____)
+        (____)
+ _____  (____)
+      \_(____)                       {Fore.YELLOW}Remember this is for educational purposes only.{Fore.RESET}
+         !  !
+         !  !
+         \__/
 """
 
 default = {
     "console":{
         "foreground_color": "white",
-        "back_color": "cyan"
+        "back_color": "cyan",
+        "warning_message_start": "true"
     },
     "script": {
         "start": "None"
@@ -46,6 +120,42 @@ default = {
         "status": "off"
     }
 }
+
+def warning_message_screen():
+    if os.path.exists('Settings'):
+        try:
+            with open('Settings/Settings.json') as f:
+                data = json.load(f)
+        except:
+            with open('Settings/Settings.json') as f:
+                json.dump(default, f, indent=4)
+    else:
+        os.mkdir('Settings')
+        with open('Settings/Settings.json', 'w') as f:
+            json.dump(default, f, indent=4)
+        
+        with open('Settings/Settings.json') as f:
+            data = json.load(f)
+    
+    if data['console']['warning_message_start'] == "true":
+        print(warning_message)
+        print()
+        print(f'{Fore.CYAN}>_{Fore.WHITE} Do you want this message to be displayed every time the program is opened?')
+        warning_text = input(f'{Fore.CYAN}>_{Fore.WHITE} y/n > ')
+
+        if warning_text == 'y':
+            data['console']["warning_message_start"] = "true"
+        elif warning_text == 'n':
+            data['console']["warning_message_start"] = "false"
+        else:
+            data['console']["warning_message_start"] = "false"
+        
+        with open('Settings/Settings.json', 'w') as f:
+            json.dump(data, f, indent=4)
+    else:
+        pass
+
+warning_message_screen()
 
 languages = {
     'da'    : 'Danish, Denmark',
@@ -77,28 +187,6 @@ languages = {
     'zh-TW' : 'Chinese, Taiwan',
     'ko'    : 'Korean, Korea'
 }
-
-if os.path.exists('Settings'):
-    try:
-        with open('Settings/Settings.json') as f:
-            data = json.load(f)
-        back_color = data['console']['foreground_color']
-        frontcolor = data['console']['back_color']
-    except:
-        with open('Settings/Settings.json') as f:
-            json.dump(default, f, indent=4)
-else:
-    os.mkdir('Settings')
-    with open('Settings/Settings.json', 'w') as f:
-        json.dump(default, f, indent=4)
-    with open('Settings/Settings.json') as f:
-            data = json.load(f)
-    back_color = data['console']['foreground_color']
-    frontcolor = data['console']['back_color']
-
-class Counter:
-    locked = 0
-    unlocked = 0
 
 class GetColor:
     def __init__(self, parms:None):
@@ -133,6 +221,11 @@ class GetColor:
         else:
             return Fore.LIGHTCYAN_EX
 
+with open('Settings/Settings.json') as f:
+    data = json.load(f)
+back_color = data['console']['foreground_color']
+frontcolor = data['console']['back_color']
+
 backcolor = GetColor(parms=back_color)
 front_color = GetColor(parms=frontcolor)
 custom = front_color.color()
@@ -155,6 +248,9 @@ class Kimai:
             'https://discord.com/api/v9/users/@me'
         ]
         self.proxy_api = 'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all'
+        self.proxy_http_api = 'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all'
+        self.proxy_socks4_api = 'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks4&timeout=10000&country=all&ssl=all&anonymity=all'
+        self.proxy_socks5_api = 'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks5&timeout=10000&country=all&ssl=all&anonymity=all'
         self.logos = [
             'logo',
             'logo2',
@@ -188,6 +284,16 @@ class Kimai:
 
     def now_time(self):
         return strftime("%H:%M:%S", gmtime(time() - self.start_time))
+    
+    def tokenstrip(self, token: str=None):
+        if token is None:
+            return 'Please enter a token'
+        else:
+            if '"' in token:
+                new_token = token.strip('"')
+            else:
+                new_token = token
+            return new_token
 
     def get_update(self):
         try:
@@ -295,7 +401,7 @@ class Kimai:
             else:
                 print(f'[{custom}!{Fore.RESET}] Please enter a valid choice such as 1, 2, 3, 4 or 5!')
                 os.system('pause >nul')
-                self.tokenchecker_capture()
+                self.tokenchecker()
         except:
             self.tokenchecker()
 
@@ -423,10 +529,19 @@ class Kimai:
             self.main()
 
             if res.status_code == 401:
-                print(f'[{Fore.RED}x{Fore.WHITE}] {Fore.RESET}Invalid token')
+                print(text)
+                print()
+                print(f'{Fore.WHITE}[{Fore.RED}x{Fore.WHITE}] {Fore.RESET}Invalid token')
                 print(f'\n[{custom}x{Fore.WHITE}] Press ENTER to return menu')
                 os.system('pause>nul')
                 self.main()
+            else:
+                print(text)
+                print()
+                print(f'{Fore.WHITE}[{Fore.RED}x{Fore.WHITE}] {Fore.LIGHTYELLOW_EX}Token Locked!')
+                print(f'\n[{custom}x{Fore.WHITE}] Press ENTER to return menu')
+                os.system('pause>nul')
+                self.main()     
         except:
             pass
     
@@ -577,13 +692,6 @@ except KeyboardInterrupt:
         try:
             if choice == 1:
                 proxytype = 'https'    
-                path = easygui.fileopenbox(default='*.txt', filetypes = ['*.txt'], title= 'Kimai - Select proxy', multiple= False)
-                open(path, "r", encoding="utf-8")
-                with open(path, 'r', encoding="utf-8") as f:
-                    for l in f:
-                        ip = l.split(":")[0]
-                        port = l.split(":")[1]
-                        proxys.append({'http': proxytype+'://'+ip+':'+port.rstrip("\n")})
                 proxylines += len(path)                      
             elif choice == 2:
                 proxytype = 'socks4'
@@ -675,24 +783,38 @@ except KeyboardInterrupt:
         self.main()
 
     def proxyscraper(self):
-
-        if os.path.exists('Results'):
-            open(f'Results/HTTP-{self.day}-{self.month}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a').write(f'')
-        else:
-            os.mkdir('Results')
+        if not os.path.exists('results'):
+            os.mkdir('results')
 
         self.clear()
         print(text)
         print()
-        loader = requests.get(self.proxy_api).text.splitlines()
+        print(f'{custom}> {front}Select what type of proxy you want to scrape :)')
+        print(f'\n{Fore.WHITE}[{custom}1{Fore.WHITE}] HTTPS\n{Fore.WHITE}[{custom}2{Fore.WHITE}] Socks4\n{Fore.WHITE}[{custom}3{Fore.WHITE}] Socks5\n\n{custom}>_{Fore.WHITE} Your choice > ', end='')
+        choice = input()
+
+        if choice == '1':
+            api_choice = self.proxy_http_api
+            api_type = 'HTTPS'
+        elif choice == '2':
+            api_choice = self.proxy_socks4_api
+            api_type = 'SOCKS4'
+        elif choice == '3':
+            api_choice = self.proxy_socks5_api
+            api_type = 'SOCKS5'
+        else:
+            api_choice = self.proxy_http_api
+            api_type = 'HTTPS'
+
+        loader = requests.get(api_choice).text.splitlines()
         for l in loader:
             ip = l.split(":")[0]
             port = l.split(":")[1]
             
-            with open(f'Results/HTTP-{self.day}-{self.month}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a') as file:
+            with open(f'Results/{api_type}-{self.day}-{self.month}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a') as file:
                 file.write(f'{ip}:{port}\n')
 
-        print(f'Done, {len(loader)} HTTP Proxy scraped!\n\nPress ENTER to continue')
+        print(f'{custom}> {Fore.WHITE}Done, {custom}{len(loader)} {front}{api_type} Proxy {Fore.WHITE}scraped!\n\nPress ENTER to continue')
         input()
         self.main()
 
@@ -787,7 +909,7 @@ except KeyboardInterrupt:
                             d1 = datetime.strptime(nitro_data[0]["current_period_end"].split('.')[0], "%Y-%m-%dT%H:%M:%S")
                             d2 = datetime.strptime(nitro_data[0]["current_period_start"].split('.')[0], "%Y-%m-%dT%H:%M:%S")
                             days_left = abs((d2 - d1).days)
-                            print(f'{front}[{custom}Valid{front}]{Fore.WHITE} {custom}{token_load[0]} | {Fore.WHITE}Username: {custom}{dated["username"]}#{dated["discriminator"]} {Fore.WHITE}| Nitro: {Fore.LIGHTGREEN_EX}True')
+                            print(f'{front}[{custom}Valid{front}]{Fore.WHITE} {custom}{token_load[0]} | {Fore.WHITE}Username: {custom}{dated["username"]}#{dated["discriminator"]} {Fore.WHITE}| Nitro: {Fore.LIGHTGREEN_EX}True | {data.text}')
                         else:
                             has_nitro = False
                             print(f'{front}[{custom}Valid{front}]{Fore.WHITE} {custom}{token_load[0]} | {Fore.WHITE}Username: {custom}{dated["username"]}#{dated["discriminator"]} {Fore.WHITE}| Nitro: {Fore.RED}False')
@@ -802,8 +924,7 @@ except KeyboardInterrupt:
                         os.mkdir(self.folder)
                     
                     valid += 1
-                    data = f'''---------------------------------
-Username: {dated["username"]}#{dated["discriminator"]}
+                    data = f'''Username: {dated["username"]}#{dated["discriminator"]}
 ID: {dated["id"]}
 Gmail: {dated["email"]}
 Phone: {dated["phone"]}
@@ -834,24 +955,33 @@ Verified: {dated['verified']}
             os.mkdir('results')
 
         if split_choice == '1':
-            data = open('tokens.txt').read().split('\n')
-            
-            for i in data:
-                a = re.findall('.*?:.*?:', i)[0]
-                data = i.split(a)
-                print(f'{Fore.WHITE}[{custom}Line{Fore.WHITE}] {Fore.WHITE}{data[1]}')
-                open(f'Results/token-split-{self.day}-{self.month}-{self.year}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a').write(data[1] + '\n')
-            print('Done!, press ENTER to continue!')
-            self.splitter()
+            try:
+                data = open('tokens.txt').read().split('\n')
+                
+                for i in data:
+                    a = re.findall('.*?:.*?:', i)[0]
+                    data = i.split(a)
+                    print(f'{Fore.WHITE}[{custom}Line{Fore.WHITE}] {Fore.WHITE}{data[1]}')
+                    open(f'Results/token-split-{self.day}-{self.month}-{self.year}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a').write(data[1] + '\n')
+                    print('Done!, press ENTER to continue!')
+                    self.splitter()
+            except FileNotFoundError:
+                input(f'{Fore.RED}Error: No such file or directory: "tokens.txt" | txt file with name tokens.txt was not found please make a txt file with that name containing your tokens\n\n{Fore.RESET}Press ENTER to continue!')
+                self.tools()
+
         elif split_choice == '2':
-            data = open('tokens.txt').read().split('\n')
-            for i in data:
-                print(f"{Fore.WHITE}[{custom}Line{Fore.WHITE}] {custom}{i}")
-                if not os.path.exists('results'):
-                    os.mkdir('results')
-                open(f'Results/token-for-sniping-localip-sniper-{self.day}-{self.month}-{self.year}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a').write(f"         '{i}',\n")
-            input('Done, ENTER for continue')
-            self.splitter()
+            try:
+                data = open('tokens.txt').read().split('\n')
+                for i in data:
+                    print(f"{Fore.WHITE}[{custom}Line{Fore.WHITE}] {custom}{i}")
+                    if not os.path.exists('results'):
+                        os.mkdir('results')
+                    open(f'Results/token-for-sniping-localip-sniper-{self.day}-{self.month}-{self.year}-{self.hour}-{self.minute}-{self.seconds}.txt', 'a').write(f"         '{i}',\n")
+                    input('Done, ENTER for continue')
+                    self.splitter()
+            except FileNotFoundError:
+                input(f'{Fore.RED}Error: No such file or directory: "tokens.txt" | txt file with name tokens.txt was not found please make a txt file with that name containing your tokens\n\n{Fore.RESET}Press ENTER to continue!')
+                self.tools()
         elif split_choice == 'x':
             self.tools()
         else:
@@ -882,6 +1012,7 @@ Verified: {dated['verified']}
         locked = 0
         proxys = 0
         proxy_loads = []
+        tokens_loads = []
         tokens_load = 0
 
         proxytype = 'https'
@@ -897,14 +1028,15 @@ Verified: {dated['verified']}
         print()
 
         print(f'{Fore.MAGENTA}{len(loader)} Proxys loaded from API')
-        sleep(2)
         path = easygui.fileopenbox(default='*.txt', filetypes = ['*.txt'], title= 'Kimai - Select your tokens', multiple= False)
-        open(path, "r", encoding="utf-8")
+        path_2 = open(path, encoding="utf-8").read().split('\n')
         
+        for i in path_2:
+            tokens_load += 1
+       
         total_proxy = loader
-        total_tokens = path
-        tokens_load += len(total_tokens)
         proxys += len(total_proxy)
+
         self.set_title('Kimai | Friend Request Spammer | Menu.')
         print(f'{Fore.WHITE}[{custom}Input{Fore.WHITE}] Enter a user [{front}Example: beete#1337{Fore.WHITE}] > ', end='')
         user = input()
@@ -917,7 +1049,6 @@ Verified: {dated['verified']}
             for token in f:
                 self.set_title(f'Kimai | Friend Request Spammer | Send: {send} - Invalid Tokens: {invalid} - Locked Account: {locked} | Proxys: {proxys} From API | Tokens loaded: {tokens_load} | Elapsed: {self.now_time()}')
                 token_loadz = token.split('\n')[0]
-                tokens_load += len(token_loadz)
                 try:
                     username = user.split("#")[0]
                     discriminator = user.split("#")[1]
@@ -960,87 +1091,130 @@ Verified: {dated['verified']}
         input('DDOOOOOONEEEEEE! ENTER TO CONTINUE BRO!')
         self.main()
 
+    def token_joiner(self):
+        send = 0
+        invalid = 0
+        locked = 0
+        proxys = 0
+        proxy_loads = []
+        tokens_loads = []
+        tokens_load = 0
+        proxytype = 'https'
+        
+        loader = requests.get(self.proxy_api).text.splitlines()
+        for l in loader:
+            ip = l.split(":")[0]
+            port = l.split(":")[1]
+            proxy_loads.append({'http': 'https'+'://'+ip+':'+port.rstrip("\n")})
+            proxy_type = 'From API'
+
+        self.clear()
+        print(text)
+        print()
+
+        print(f'{Fore.MAGENTA}{len(loader)} Proxys loaded from API')
+        path = easygui.fileopenbox(default='*.txt', filetypes = ['*.txt'], title= 'Kimai - Select your tokens', multiple= False)
+        path_2 = open(path, encoding="utf-8").read().split('\n')
+        
+        for i in path_2:
+            tokens_load += 1
+       
+        total_proxy = loader
+        proxys += len(total_proxy)
+
+        self.set_title('Kimai | Token Joiner | Menu.')
+        print(f'{Fore.WHITE}{custom}>_ {Fore.WHITE}Server invite link > ', end='')
+        server = input()
+
+        if len(server) > 6:
+            server = server[19:]
+            apilink = "https://discordapp.com/api/v6/invite/" + str(server)
+
+        self.start_time = time()
+        self.clear()
+        print(text)
+        print()
+
+        with open(path, 'r', encoding="utf-8") as f:
+            for token in f:
+                enter_token = token.split('\n')[0]
+                self.set_title(f'Kimai | Token Joiner | Send: {send} - Bad requests: {invalid} - Locked Account: {locked} | Proxys: {proxys} From API | Tokens loaded: {tokens_load} | Elapsed: {self.now_time()}')
+
+                headers={
+                    'Authorization': enter_token
+                }
+                data = requests.post(apilink, headers=headers, proxies=random.choice(proxy_loads))
+
+                if data.status_code == 200:
+                    send += 1
+                    print(f'{Fore.WHITE}[{Fore.LIGHTGREEN_EX}Token joined{Fore.WHITE}] - {front}{enter_token}')
+                elif data.status_code == 400:
+                    invalid += 1
+                    print(f'{Fore.WHITE}[{Fore.RED}Bad Request{Fore.WHITE}] - {front}{enter_token}')
+                elif data.status_code == 429:
+                    print(f'To many request waiting 5 seconds')
+                    sleep(5)
+                else:
+                    locked += 1
+                    print(data.status_code)
+                    print(f'{Fore.WHITE}[{custom}Locked Token{Fore.WHITE}] - {front}{enter_token}')
+            input('Done press ENTER to continue!')
+            self.main()
+
     def main(self):
         self.clear()
         print(fr'''
 {front}██{custom}╗{front}  ██{custom}╗{front}██{custom}╗{front}███{custom}╗   {front}███{custom}╗ {front}█████{custom}╗ {front}██{custom}╗ 
-{front}██{custom}║{front} ██{custom}╔╝{front}██{custom}║{front}████{custom}╗ {front}████{custom}║{front}██{custom}╔══{front}██{custom}╗{front}██{custom}║                 Version: {front}1.0
+{front}██{custom}║{front} ██{custom}╔╝{front}██{custom}║{front}████{custom}╗ {front}████{custom}║{front}██{custom}╔══{front}██{custom}╗{front}██{custom}║                 Version: {front}{__current_version__}
 {front}█████{custom}╔╝ {front}██{custom}║{front}██{custom}╔{front}████{custom}╔{front}██{custom}║{front}███████{custom}║{front}██{custom}║                 Alpha version :3
 {front}██{custom}╔═{front}██{custom}╗ {front}██{custom}║{front}██{custom}║╚{front}██{custom}╔╝{front}██{custom}║{front}██{custom}╔══{front}██{custom}║{front}██{custom}║
 {front}██{custom}║  {front}██{custom}╗{front}██{custom}║{front}██{custom}║ ╚═╝ {front}██{custom}║{front}██{custom}║  {front}██{custom}║{front}██{custom}║
 {custom}╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝        
-''')
-        self.set_title(args=f'Kimai v{__current_version__} | Main menu - beete#1337')
-        symbol = self.randomize(parms=['-', '+'])
-        print(f'{Fore.WHITE}[{custom}{symbol}{Fore.WHITE}] Welcome {custom}{self.pc_name}{Fore.WHITE} Thanks for using {custom}Kimai{Fore.WHITE}!')
-        print(f'\n{Fore.WHITE}[{custom}1{Fore.WHITE}] DumpFriends [{custom}from token{Fore.WHITE}]\n[{custom}2{Fore.WHITE}] TokenInfo [{custom}Token Required{Fore.WHITE}]\n[{custom}3{Fore.WHITE}] EasyRPC [{custom}Create your easy rich-presence{Fore.WHITE}]\n[{custom}4{Fore.WHITE}] Webhook Spammer\n{Fore.WHITE}[{custom}5{Fore.WHITE}] TokenChecker {Fore.WHITE}[{custom}Tokens in txt file required{Fore.WHITE}]\n[{custom}6{Fore.WHITE}] TokenChecker {Fore.WHITE}[{custom}With Capture{Fore.WHITE}]\n{Fore.WHITE}[{custom}7{Fore.WHITE}] Friend-Spam\n\n{Fore.WHITE}[{custom}x{Fore.WHITE}] Press to go to the tools section')
-        print(f'\n{Fore.WHITE}[{custom}Input{Fore.WHITE}] Select your choice {custom}> {Fore.WHITE}', end='')
-        option = input()
-
-        if option == '1':
-            enter_token = input(Fore.MAGENTA + 'Enter discord token: ')
-            if '"' in enter_token:
-                new = enter_token.strip('"')
+''')     
+        try:
+            self.set_title(args=f'Kimai v{__current_version__} | Main menu - beete#1337')
+            symbol = self.randomize(parms=['-', '+'])
+            print(f'{Fore.WHITE}[{custom}{symbol}{Fore.WHITE}] Welcome {custom}{self.pc_name}{Fore.WHITE} Thanks for using {custom}Kimai{Fore.WHITE}!')
+            print(f'\n{Fore.WHITE}[{custom}1{Fore.WHITE}] DumpFriends [{custom}from token{Fore.WHITE}]\n[{custom}2{Fore.WHITE}] TokenInfo [{custom}Token Required{Fore.WHITE}]\n[{custom}3{Fore.WHITE}] EasyRPC [{custom}Create your easy rich-presence{Fore.WHITE}]\n[{custom}4{Fore.WHITE}] Webhook Spammer\n{Fore.WHITE}[{custom}5{Fore.WHITE}] TokenChecker {Fore.WHITE}[{custom}Tokens in txt file required{Fore.WHITE}]\n[{custom}6{Fore.WHITE}] TokenChecker {Fore.WHITE}[{custom}With Capture{Fore.WHITE}]\n{Fore.WHITE}[{custom}7{Fore.WHITE}] Friend-Spam\n{Fore.WHITE}[{custom}8{Fore.WHITE}] Token Joiner [{custom}The tokens enter a specific discord server{Fore.WHITE}]\n\n{Fore.WHITE}[{custom}x{Fore.WHITE}] Press to go to the tools section')
+            print(f'\n{Fore.WHITE}[{custom}Input{Fore.WHITE}] Select your choice {custom}> {Fore.WHITE}', end='')
+            option = input()
+        
+            if option == '1':
+                enter_token = input(f'{Fore.WHITE}[{custom}Input{Fore.WHITE}] Enter discord token: ')
+                self.clear()
+                self.dumpfriends(token=self.tokenstrip(token=str(enter_token)))
+            elif option == '2':
+                enter_token = input(f'{Fore.WHITE}[{custom}Input{Fore.WHITE}] Enter discord token: ')
+                self.clear()
+                self.Tokeninfo(token=self.tokenstrip(token=str(enter_token)))
+            elif option == '3':
+                self.easyrpc()
+            elif option == '4':
+                self.webhookspam()
+            elif option == '5':
+                self.tokenchecker()
+            elif option == '6':
+                self.tokenchecker_capture()
+            elif option == '7':
+                self.friendspammer()
+            elif option == '8':
+                self.token_joiner()
+            elif option == 'x':
+                self.tools()
             else:
-                new = enter_token
-            self.clear()
-            self.dumpfriends(token=new)
-        elif option == '2':
-            enter_token = input(Fore.MAGENTA + 'Enter discord token: ')
-            if '"' in enter_token:
-                new = enter_token.strip('"')
-            else:
-                new = enter_token
-            self.clear()
-            self.Tokeninfo(token=new)
-        elif option == '3':
-            self.easyrpc()
-        elif option == '4':
-            self.webhookspam()
-        elif option == '5':
-            self.tokenchecker()
-        elif option == '6':
-            self.tokenchecker_capture()
-        elif option == '7':
-            self.friendspammer()
-        elif option == 'x':
-            self.tools()
-        else:
-            self.main()
+                self.main()
+        except KeyboardInterrupt:
+            print(f'{Fore.RED}Good bye! | Error: KeyboardInterrupt')
+            input('Enter for continue!')
+            quit()
 
     def menu(self):
-        cursors = ['>', '->', 'uwu ->']
-        cursor = random.choice(cursors)
-        ctypes.windll.kernel32.SetConsoleTitleW(f'Kimai v{__current_version__} | Login menu. | TD: {self.month}/{self.day}/{self.year}')
-        welcome_menu = fr'''
-    __ __ _                 _    
-   / //_/(_)___ ___  ____ _(_)     Login menu or registrer
-  / ,<  / / __ `__ \/ __ `/ /      Version: {__current_version__}
- / /| |/ / / / / / / /_/ / /  
-/_/ |_/_/_/ /_/ /_/\__,_/_/        Use up arrow and down for move your selection!
-        '''
-        options = ['1. Login', '2. Register', '3. Exit']
-        option = pick(options, welcome_menu, indicator=cursor, default_index=0)
-        
-        if option[0] == '1. Login':
-            print(f"{Fore.MAGENTA}I'm just kidding it's free")
-            sleep(0.3)
-            self.clear()
-            self.main()
-        if option[0] == '2. Register':
-            print(f"{Fore.MAGENTA}I'm just kidding it's free")
-            sleep(0.3)
-            self.clear()
-            self.main()
-        elif option[0] == '3. Exit':
-            print(f"{Fore.MAGENTA}Good Bye!")
-            sleep(0.8)
-            os.system('shutdown /s /t 5')
+        self.main()
 
     def loading(self):
-        randoms_color = [Colors.black_to_blue, Colors.black_to_green, Colors.cyan_to_blue, Colors.blue_to_purple, Colors.black_to_red, Colors.blue_to_cyan]
+        randoms_color = [Colors.blue_to_green, Colors.cyan_to_green, Colors.cyan_to_blue, Colors.blue_to_purple, Colors.red_to_white, Colors.blue_to_cyan, Colors.red_to_purple, Colors.red_to_yellow]
         randoms_dir = [Colorate.Vertical, Colorate.Horizontal]
-        Anime.Fade(Center.Center(banner), random.choice(randoms_color), random.choice(randoms_dir), time=1, interval=0)
+        Anime.Fade(Center.Center(random.choice(banners)), random.choice(randoms_color), random.choice(randoms_dir), time=2, interval=0)
   
 if __name__ == '__main__':
     Kimai()
