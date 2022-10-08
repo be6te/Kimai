@@ -27,3 +27,4 @@
 - [Why do you have so few options?](https://github.com/lbeete/Kimai/wiki/%C2%BFWhy-does-it-have-so-few-modules-and-so-few-options%3F)
 - [Download Kimai in exe file](https://github.com/lbeete/Kimai/releases/tag/v1.0)
 
+> possibly 2.0 will be one of the best
